@@ -83,7 +83,7 @@
         .btn-outline-primary { border: 1px solid var(--md-sys-color-primary); color: var(--md-sys-color-primary); background: transparent;}
         .btn-icon { padding: 6px; border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.9); transition: all 0.2s;}
         
-        .form-control, .form-select { border-radius: 0.85rem; border: 1px solid transparent; padding: 0.65rem 1rem; width: 100%; background-color: rgba(255,255,255,0.6); font-family: inherit; font-size: 0.95rem; color: #1e293b; transition: all 0.2s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+        .form-control, .form-select { border-radius: 0.85rem; border: 1px solid rgba(15, 23, 42, 0.15); padding: 0.65rem 1rem; width: 100%; background-color: rgba(255,255,255,0.85); font-family: inherit; font-size: 0.95rem; color: #1e293b; transition: all 0.2s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
         .form-control:focus, .form-select:focus { background-color: white; border-color: var(--md-sys-color-primary); box-shadow: 0 0 0 3px var(--md-sys-color-primary-container); outline: none; }
         .form-check-input { width: 1.1rem; height: 1.1rem; cursor: pointer; accent-color: var(--md-sys-color-primary);}
         
@@ -200,11 +200,30 @@
                     <img src="https://raw.githubusercontent.com/syafii0388/Logo/b736145fff516c48313c3df2564632ed222ace83/Logo%20Sekolah.png" alt="Logo" class="w-full h-full object-contain rounded-full shadow-inner">
                 </div>
                 <h3 id="loginAppTitle" class="text-2xl font-extrabold text-slate-800 tracking-tight">ZeroEdu</h3>
-                <p class="text-slate-500 mt-1 font-medium text-sm">Platform Administrasi Digital</p>
+                <p class="text-slate-500 mt-1 font-medium text-sm">Administrasi Kelas Digital</p>
             </div>
             
             <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="row mb-4">
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5 ml-1">Username / Email</label>
+                    <div class="relative">
+                        <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">person</span>
+                        <input type="text" id="username" class="form-control pl-10" required autocomplete="username">
+                    </div>
+                </div>
+    
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5 ml-1">Password</label>
+                    <div class="relative">
+                        <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">lock</span>
+                        <input type="password" id="password" class="form-control pl-10 pr-10" required autocomplete="current-password">
+                        <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 flex items-center justify-center bg-transparent border-none" onclick="togglePasswordVisibility()">
+                            <span class="material-symbols-rounded text-lg" id="eyeIcon">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mb-6">
                     <div class="col-6">
                         <label class="block text-xs font-bold text-slate-700 mb-1.5 ml-1">Tahun Ajaran</label>
                         <select id="loginTahunAjaran" class="form-control" required>
@@ -224,24 +243,7 @@
                     </div>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-xs font-bold text-slate-700 mb-1.5 ml-1">Username / Email</label>
-                    <div class="relative">
-                        <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">person</span>
-                        <input type="text" id="username" class="form-control pl-10" required autocomplete="username">
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-xs font-bold text-slate-700 mb-1.5 ml-1">Password</label>
-                    <div class="relative">
-                        <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">lock</span>
-                        <input type="password" id="password" class="form-control pl-10 pr-10" required autocomplete="current-password">
-                        <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 flex items-center justify-center bg-transparent border-none" onclick="togglePasswordVisibility()">
-                            <span class="material-symbols-rounded text-lg" id="eyeIcon">visibility</span>
-                        </button>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary w-full py-2.5 text-base shadow-lg">Masuk ke Dashboard</button>
+                <button type="submit" class="btn btn-primary w-full py-2.5 text-base shadow-lg">Masuk Yuk</button>
             </form>
         </div>
     </section>
@@ -271,7 +273,7 @@
                 <a href="#" class="nav-item-custom" onclick="showPage('jadwal', this)"><span class="material-symbols-rounded">event_note</span> Jadwal Mengajar</a>
                 <a href="#" class="nav-item-custom" onclick="showPage('piket', this)"><span class="material-symbols-rounded">cleaning_services</span> Jadwal Piket</a>
                 <a href="#" class="nav-item-custom" onclick="showPage('absensi', this)"><span class="material-symbols-rounded">how_to_reg</span> Absensi Siswa</a>
-                <a href="#" class="nav-item-custom" onclick="showPage('tabungan', this)"><span class="material-symbols-rounded">savings</span> Tabungan Siswa</a>
+                <a href="#" class="nav-item-custom" onclick="showPage('tabungan', this)"><span class="material-symbols-rounded">wallet</span> Tabungan Siswa</a>
                 <a href="#" class="nav-item-custom" onclick="showPage('nilai', this)"><span class="material-symbols-rounded">stars</span> Nilai Siswa</a>
                 <a href="#" class="nav-item-custom" onclick="showPage('jurnal', this)"><span class="material-symbols-rounded">menu_book</span> Jurnal Mengajar</a>
                 <a href="#" class="nav-item-custom" onclick="showPage('catatan', this)"><span class="material-symbols-rounded">fact_check</span> Catatan Siswa</a>
@@ -308,7 +310,7 @@
                         <span id="topbarInitial" class="text-primary">-</span>
                     </div>
                     <button onclick="logout()" class="btn-icon bg-rose-50 text-rose-600 border border-rose-200/50 shadow-sm shrink-0 w-9 h-9 hover:bg-rose-100 dark:bg-rose-500/20 dark:border-rose-500/30 dark:text-rose-400 dark:hover:bg-rose-500/30" title="Keluar">
-                        <span class="material-symbols-rounded text-[20px]">power_settings_new</span>
+                        <span class="material-symbols-rounded text-[20px]">logout</span>
                     </button>
                 </div>
             </header>
@@ -489,7 +491,7 @@
                 </div>
 
                 <div id="page-tabungan" class="app-page d-none">
-                    <div class="flex items-center mb-6 gap-3"><div class="bg-white/50 p-1.5 rounded-lg shadow-sm border border-white"><span class="material-symbols-rounded text-2xl text-primary block">savings</span></div><h4 class="mb-0 font-extrabold text-2xl text-slate-800 tracking-tight">Tabungan Kelas</h4></div>
+                    <div class="flex items-center mb-6 gap-3"><div class="bg-white/50 p-1.5 rounded-lg shadow-sm border border-white"><span class="material-symbols-rounded text-2xl text-primary block">wallet</span></div><h4 class="mb-0 font-extrabold text-2xl text-slate-800 tracking-tight">Tabungan Kelas</h4></div>
                     <ul class="nav-tabs text-sm">
                         <li class="nav-item"><a class="nav-link active pointer" id="tab-tabungan-input" onclick="switchTab('tabungan', 'input')">Transaksi Baru</a></li>
                         <li class="nav-item"><a class="nav-link pointer" id="tab-tabungan-rekap" onclick="switchTab('tabungan', 'rekap')">Buku Kas</a></li>
@@ -632,7 +634,7 @@
                     <div class="flex items-center mb-6 gap-3"><div class="bg-white/50 p-1.5 rounded-lg shadow-sm border border-white"><span class="material-symbols-rounded text-2xl text-primary block">fact_check</span></div><h4 class="mb-0 font-extrabold text-2xl text-slate-800 tracking-tight">Catatan Anekdotal</h4></div>
                     <div class="row">
                         <div class="col-md-4 mb-4"><div class="custom-card"><div class="custom-card-header bg-white/40 rounded-t-[1.25rem]">Input Catatan</div><div class="custom-card-body pt-3 text-sm"><form onsubmit="saveCatatan(event)"><input type="hidden" id="ct_id"><div class="mb-3"><label class="mb-1 block font-bold ml-1">Tanggal</label><input type="date" id="ct_tgl" class="form-control bg-white" required></div><div class="mb-3"><label class="mb-1 block font-bold ml-1">Nama Siswa</label><select id="ct_siswa" class="form-select bg-white" required></select></div><div class="mb-4"><label class="mb-1 block font-bold ml-1">Kejadian</label><textarea id="ct_teks" class="form-control bg-white" rows="4" required></textarea></div><button type="submit" class="btn btn-primary w-full shadow-sm py-2">Simpan</button></form></div></div></div>
-                        <div class="col-md-8"><div class="custom-card"><div class="custom-card-header flex justify-between items-center bg-white/40 rounded-t-[1.25rem]"><span>Buku Kasus/Prestasi</span>
+                        <div class="col-md-8"><div class="custom-card"><div class="custom-card-header flex justify-between items-center bg-white/40 rounded-t-[1.25rem]"><span>Buku Catatan Siswa</span>
                         <button class="btn btn-sm bg-blue-100 text-blue-700 hover:bg-blue-200 border-none shadow-sm dark:bg-blue-900/40 dark:text-blue-300 dark:hover:bg-blue-900/60" onclick="exportCatatan()"><span class="material-symbols-rounded mr-1 text-sm">download</span> Ekspor</button></div><div class="table-responsive pt-2"><table class="table text-sm"><thead><tr><th class="w-24">Tanggal</th><th class="w-40">Siswa</th><th>Uraian</th><th class="text-center w-24">Aksi</th></tr></thead><tbody id="tblCatatan"><tr><td colspan="4" class="text-center text-slate-400 py-4 italic">Belum ada catatan</td></tr></tbody></table></div></div></div>
                     </div>
                 </div>
@@ -702,6 +704,7 @@
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="siswa" checked> Data Siswa</label>
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="mapel" checked> Daftar Mapel</label>
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="jadwal"> Jadwal Mengajar</label>
+                                            <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="tabungan"> Tabungan Siswa</label>
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="inventaris"> Inventaris</label>
                                         </div>
                                         <p class="text-xs text-rose-500 mt-3 font-bold flex items-center bg-rose-50 dark:bg-rose-900/20 p-2 rounded-lg"><span class="material-symbols-rounded text-base mr-1">warning</span> Hati-hati: Data yang dicentang akan ditarik dan menimpa (menghapus) data di semester aktif saat ini secara permanen!</p>
@@ -725,7 +728,7 @@
                 <span class="text-[10px] font-bold">Absensi</span>
             </a>
             <a href="#" class="flex-1 flex flex-col items-center p-1 text-slate-500 hover:text-primary nav-bottom-item" onclick="showPage('tabungan', this)">
-                <span class="material-symbols-rounded text-[28px] mb-1">savings</span>
+                <span class="material-symbols-rounded text-[28px] mb-1">wallet</span>
                 <span class="text-[10px] font-bold">Tabungan</span>
             </a>
             <a href="#" class="flex-1 flex flex-col items-center p-1 text-slate-500 hover:text-primary nav-bottom-item" onclick="showPage('nilai', this)">
