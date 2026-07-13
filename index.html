@@ -699,7 +699,7 @@
                                             </div>
                                         </div>
                                         <label class="mt-2 mb-2 block font-bold ml-1 text-slate-700">Pilih Data yang Akan Disalin (Mencentang berarti menimpa data saat ini):</label>
-                                        <div class="flex flex-wrap gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="pengaturan" checked> Pengaturan Kelas</label>
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="siswa" checked> Data Siswa</label>
                                             <label class="flex items-center cursor-pointer font-semibold text-slate-600 dark:text-slate-300"><input type="checkbox" class="form-check-input mr-2 copy-chk" value="mapel" checked> Daftar Mapel</label>
@@ -1120,6 +1120,33 @@
             document.getElementById('statSaldo').innerText = formatRp(saldo);
             document.getElementById('statTugas').innerText = localDB.mapel.length; 
             
+            let totalHadir = 0;
+            let totalDataMasuk = 0;
+
+            localDB.absensi.forEach(rekam => {
+                let tglObj = new Date(rekam.tgl);
+                if (tglObj.getDay() !== 0) { 
+                    Object.values(rekam.data).forEach(status => {
+                        if (['H', 'S', 'I', 'A'].includes(status)) {
+                            totalDataMasuk++;
+                            if (status === 'H') {
+                                totalHadir++;
+                            }
+                        }
+                    });
+                }
+            });
+
+            let persenPresensi = 0;
+            if (totalDataMasuk > 0) {
+                persenPresensi = Math.round((totalHadir / totalDataMasuk) * 100);
+            }
+            
+            let elemenPresensi = document.getElementById('statPresensi');
+            if(elemenPresensi) {
+                elemenPresensi.innerText = persenPresensi + '%';
+            }
+
             let hariIni = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][new Date().getDay()]; 
             let elHari1 = document.getElementById('dashHariIni1'); let elHari2 = document.getElementById('dashHariIni2');
             if(elHari1) elHari1.innerText = hariIni; if(elHari2) elHari2.innerText = hariIni;
