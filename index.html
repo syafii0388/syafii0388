@@ -77,17 +77,36 @@
         .nav-item-custom:hover .material-symbols-rounded { transform: scale(1.1); }
         
         .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; overflow-y: auto; background-color: transparent; }
-        .custom-card { border-radius: 1.25rem; margin-bottom: 1.25rem; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03); transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .custom-card-header { padding: 1.15rem 1.25rem; font-weight: 800; font-size: 1.1rem; color: #0f172a; border-bottom: 1px solid rgba(0,0,0,0.04);}
-        .custom-card-body { padding: 1.25rem; }
         
-        .btn { border-radius: 9999px; font-weight: 600; padding: 0.55rem 1.25rem; font-size: 0.95rem; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); border: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px;}
+        /* -- PERBAIKAN UI DIMULAI DARI SINI -- */
+        
+        /* 1. Glassmorphism: Kontras yang lebih baik (Tidak Washed Out) */
+        .custom-card { 
+            border-radius: 1.25rem; margin-bottom: 1.25rem; 
+            background: rgba(255, 255, 255, 0.85) !important; /* Latar belakang lebih solid */
+            backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 1) !important; 
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05); 
+            transition: transform 0.2s ease, box-shadow 0.2s ease; 
+        }
+        .custom-card-header { 
+            padding: 1.15rem 1.25rem; font-weight: 700; font-size: 1.1rem; color: #0f172a; 
+            border-bottom: 1px solid rgba(0,0,0,0.04); 
+            background-color: rgba(255, 255, 255, 0.95) !important; /* Menimpa class bg-white/40 Tailwind */
+            border-top-left-radius: 1.25rem; border-top-right-radius: 1.25rem; 
+        }
+        .custom-card-body { padding: 1.5rem; }
+        
+        /* 2. Mikro-Interaksi: Tombol merespons sentuhan fisik */
+        .btn { border-radius: 9999px; font-weight: 600; padding: 0.55rem 1.25rem; font-size: 0.95rem; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); border: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transform: scale(1); }
+        .btn:active { transform: scale(0.96) !important; } /* Melesak ke dalam saat diklik */
         .btn-sm { padding: 0.35rem 1rem; font-size: 0.85rem; }
         .btn-primary { background-color: var(--md-sys-color-primary); color: white; }
-        .btn-primary:hover { opacity: 0.95; box-shadow: 0 4px 12px rgba(11, 87, 208, 0.3); transform: translateY(-1px); }
+        .btn-primary:hover { opacity: 0.95; box-shadow: 0 4px 12px rgba(11, 87, 208, 0.3); }
         .btn-danger { background-color: #ba1a1a; color: white; }
         .btn-outline-primary { border: 1px solid var(--md-sys-color-primary); color: var(--md-sys-color-primary); background: transparent;}
-        .btn-icon { padding: 6px; border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.9); transition: all 0.2s;}
+        
+        .btn-icon { padding: 6px; border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.9); transition: all 0.2s; transform: scale(1); }
+        .btn-icon:active { transform: scale(0.9) !important; } /* Animasi Ikon Bulat saat diklik */
         
         .form-control, .form-select { border-radius: 0.85rem; border: 1px solid rgba(15, 23, 42, 0.15); padding: 0.65rem 1rem; width: 100%; background-color: rgba(255,255,255,0.85); font-family: inherit; font-size: 0.95rem; color: #1e293b; transition: all 0.2s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
         .form-control:focus, .form-select:focus { background-color: white; border-color: var(--md-sys-color-primary); box-shadow: 0 0 0 3px var(--md-sys-color-primary-container); outline: none; }
@@ -103,11 +122,12 @@
         .custom-option { padding: 0.5rem 0.85rem; font-size: 0.9rem; color: #334155; cursor: pointer; transition: all 0.15s ease; border-radius: 0.6rem; margin-bottom: 2px; }
         .custom-option.selected { background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-primary); font-weight: 700; }
 
+        /* 3. Ruang Bernapas: Padding ditambahkan agar tabel tidak sesak */
         .table-responsive { overflow-x: auto; padding: 0 1.25rem 1.25rem 1.25rem; }
         .table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 0.75rem; }
-        .table th { background-color: rgba(255,255,255,0.4); color: #475569; font-weight: 700; padding: 10px 12px; border-bottom: 2px solid rgba(0,0,0,0.05); text-align: left; font-size: 0.95rem; }
-        .table td { padding: 8px 12px; border-bottom: 1px solid rgba(0,0,0,0.03); color: #334155; vertical-align: middle; font-size: 0.95rem; }
-        .table tr:hover td { background-color: rgba(255,255,255,0.5); }
+        .table th { background-color: rgba(248, 250, 252, 0.8) !important; color: #475569; font-weight: 700; padding: 14px 16px !important; border-bottom: 2px solid rgba(0,0,0,0.05); text-align: left; font-size: 0.95rem; }
+        .table td { padding: 14px 16px !important; border-bottom: 1px solid rgba(0,0,0,0.03); color: #334155; vertical-align: middle; font-size: 0.95rem; }
+        .table tr:hover td { background-color: rgba(255,255,255,0.6); }
         .table th:first-child { border-top-left-radius: 10px; } .table th:last-child { border-top-right-radius: 10px; }
         
         .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.2); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; }
@@ -120,10 +140,11 @@
 
         @media (max-width: 768px) { .sidebar { position: fixed; left: -250px; } .sidebar.show { transform: translateX(250px); } }
         
+        /* 4. Penyempurnaan Dark Mode */
         html.dark body { background: #0f172a; animation: none; color: #f1f5f9; }
         html.dark .glass { background: rgba(30, 41, 59, 0.8); border-color: rgba(255,255,255,0.05); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); }
-        html.dark .custom-card { background: rgba(30, 41, 59, 0.95); border-color: rgba(255, 255, 255, 0.05); color: #f1f5f9; }
-        html.dark .custom-card-header { color: #f8fafc; border-bottom-color: rgba(255,255,255,0.05); background: rgba(15, 23, 42, 0.4) !important;}
+        html.dark .custom-card { background: rgba(30, 41, 59, 0.85) !important; border-color: rgba(255, 255, 255, 0.05) !important; color: #f1f5f9; }
+        html.dark .custom-card-header { color: #f8fafc; border-bottom-color: rgba(255,255,255,0.05); background-color: rgba(30, 41, 59, 0.95) !important;}
         
         html.dark label, html.dark p { color: #e2e8f0; } 
         html.dark .text-slate-900, html.dark .text-slate-800 { color: #f8fafc !important; }
@@ -156,7 +177,7 @@
         html.dark .custom-option { color: #e2e8f0; }
         html.dark .custom-option:hover { background-color: #334155; color: white; }
         
-        html.dark .table th { background-color: rgba(15, 23, 42, 0.6); color: #f8fafc !important; border-bottom-color: rgba(255,255,255,0.1); }
+        html.dark .table th { background-color: rgba(15, 23, 42, 0.8) !important; color: #f8fafc !important; border-bottom-color: rgba(255,255,255,0.1); }
         html.dark .table td { border-bottom-color: rgba(255,255,255,0.05); color: #e2e8f0 !important; }
         html.dark .table tr:hover td { background-color: rgba(255,255,255,0.05); }
         
@@ -193,7 +214,7 @@
             ::-webkit-scrollbar { display: none; }
         }
     </style>
-</head>
+    </head>
 <body class="transition-colors duration-300">
 
     <section id="loginPage" class="auth-page relative overflow-hidden">
