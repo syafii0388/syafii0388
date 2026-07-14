@@ -1,7 +1,7 @@
 {
-  "name": "ZeroEdu Kelas Digital",
-  "short_name": "ZeroEdu",
-  "description": "Platform Administrasi Digital",
+  "name": "S Class Digital",
+  "short_name": "Sclass",
+  "description": "Administrasi Kelas Digital",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
