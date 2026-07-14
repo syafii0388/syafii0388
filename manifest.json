@@ -1,6 +1,6 @@
 {
-  "name": "S Class Digital",
-  "short_name": "S Class",
+  "name": "AD Class Digital",
+  "short_name": "AD Class",
   "description": "Administrasi Kelas Digital",
   "start_url": "./index.html",
   "display": "standalone",
