@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AD Class</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0b57d0">
+    <meta name="theme-color" content="#0f766e">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/syafii0388/Logo/refs/heads/main/Logo%20Ali%20dan%20Devi.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -242,6 +242,258 @@
             table th, table td { border: 1px solid #000 !important; padding: 4px !important; background: transparent !important; color: #000 !important; }
             .bg-emerald-50\/80, .bg-emerald-50\/50, .bg-blue-50\/50, .bg-blue-50\/30, .bg-amber-50\/50, .bg-purple-50\/50 { background-color: transparent !important; }
             ::-webkit-scrollbar { display: none; }
+        }
+        /* =============================================================
+           REDESIGN 2026 — Professional, accessible and responsive UI
+           Keeps the existing application behaviour intact.
+           ============================================================= */
+        :root {
+            --md-sys-color-primary: #155eef;
+            --md-sys-color-primary-container: #e7efff;
+            --md-sys-color-on-primary-container: #102a6b;
+            --sidebar-width: 272px;
+            --surface: #ffffff;
+            --surface-subtle: #f8fafc;
+            --ink: #172033;
+            --muted: #667085;
+            --line: #e6eaf0;
+        }
+        html { font-size: 15px; }
+        body {
+            background: #f4f6f9; color: var(--ink); line-height: 1.5;
+            animation: none; letter-spacing: -.01em;
+        }
+        .glass {
+            background: #ffffff; backdrop-filter: none; border: 0;
+            box-shadow: none;
+        }
+        .app-shell { background: #f4f6f9; }
+        .sidebar {
+            background: #101828; color: #d0d5dd; border: 0; padding: 18px 14px;
+            height: 100dvh; box-shadow: 6px 0 20px rgba(16,24,40,.07);
+        }
+        .sidebar .text-slate-800, .sidebar h4 { color: #fff !important; }
+        .sidebar .text-slate-500 { color: #98a2b3 !important; }
+        .sidebar .border-slate-200\/50 { border-color: #344054 !important; }
+        .sidebar .bg-primary\/10 { background: rgba(255,255,255,.12) !important; }
+        .sidebar .text-primary { color: #9ab8ff !important; }
+        .nav-item-custom {
+            color: #b8c2d3; border-radius: 8px; padding: 10px 12px; margin-bottom: 3px;
+            font-size: .92rem; font-weight: 600;
+        }
+        .nav-item-custom .material-symbols-rounded { margin-right: 11px; font-size: 20px; }
+        .nav-item-custom:hover { background: #1d2939; color: #fff; }
+        .nav-item-custom.active { background: #155eef; color: #fff; box-shadow: none; }
+        .nav-item-custom.active .material-symbols-rounded { color: #fff !important; }
+        .main-content { background: #f4f6f9; height: 100dvh; }
+        header.glass {
+            background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(12px); min-height: 72px; padding: 12px 28px !important;
+            box-shadow: none;
+        }
+        .app-page { max-width: 1440px; width: 100%; margin: 0 auto; }
+        .custom-card {
+            background: var(--surface) !important; border: 1px solid var(--line) !important;
+            border-radius: 12px; box-shadow: 0 1px 2px rgba(16,24,40,.03);
+            margin-bottom: 18px; overflow: hidden;
+        }
+        .custom-card:hover { transform: none; box-shadow: 0 1px 3px rgba(16,24,40,.08); }
+        .custom-card-header {
+            background: #fff !important; color: var(--ink); border-bottom: 1px solid var(--line);
+            padding: 17px 20px; font-size: 1rem; letter-spacing: -.01em;
+        }
+        .custom-card-body { padding: 20px; }
+        .btn {
+            min-height: 38px; border-radius: 7px; padding: .55rem 1rem; font-size: .88rem;
+            font-weight: 650; box-shadow: none; gap: 7px;
+        }
+        .btn-primary { background: #155eef; box-shadow: 0 1px 2px rgba(21,94,239,.25); }
+        .btn-primary:hover { background: #004eeb; box-shadow: 0 1px 3px rgba(21,94,239,.3); }
+        .btn-success { background: #079455; } .btn-danger { background: #d92d20; }
+        .btn-indigo { background: #444ce7; }
+        .btn-tonal-primary { background: #e7efff; color: #155eef; }
+        .btn-tonal-secondary { background: #f2f4f7; color: #344054; }
+        .btn-icon { width: 34px; height: 34px; border-radius: 7px; }
+        .form-control, .form-select, .custom-select-trigger {
+            border: 1px solid #d0d5dd; border-radius: 7px; background: #fff;
+            padding: .62rem .75rem; box-shadow: 0 1px 2px rgba(16,24,40,.04);
+            color: #344054;
+        }
+        .form-control:focus, .form-select:focus, .custom-select-trigger.open {
+            border-color: #84adff; box-shadow: 0 0 0 3px #e7efff; background: #fff;
+        }
+        .custom-select-options { border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 16px rgba(16,24,40,.12); }
+        .table-responsive { padding: 0 20px 16px; }
+        .table { margin-top: 0; min-width: 680px; }
+        .table th {
+            background: #f9fafb !important; color: #475467; border-bottom: 1px solid var(--line);
+            padding: 11px 14px !important; font-size: .76rem; letter-spacing: .02em; text-transform: uppercase;
+        }
+        .table td { padding: 13px 14px !important; border-bottom: 1px solid #edf0f4; color: #344054; }
+        .table tr:hover td { background: #f9fbff; }
+        .table th:first-child { border-top-left-radius: 7px; } .table th:last-child { border-top-right-radius: 7px; }
+        .modal-overlay { background: rgba(16,24,40,.52); backdrop-filter: blur(3px); padding: 16px; }
+        .modal-content { background: #fff; border: 0; border-radius: 14px; padding: 24px; box-shadow: 0 20px 45px rgba(16,24,40,.2); }
+        .nav-tabs { gap: 0; border-bottom-color: var(--line); overflow-x: auto; }
+        .nav-tabs .nav-link { border-radius: 0; padding: .7rem 1rem; font-size: .88rem; white-space: nowrap; }
+        .nav-tabs .nav-link.active { background: transparent; color: #155eef; border-bottom-color: #155eef; }
+        .bottom-nav { background: rgba(255,255,255,.98) !important; border-top-color: var(--line) !important; }
+        .bottom-nav .nav-bottom-item { color: #667085; min-width: 54px; font-size: 10px; }
+        .bottom-nav .active-bottom { color: #155eef !important; font-weight: 700; }
+        html.dark body, html.dark .app-shell, html.dark .main-content { background: #101828; }
+        html.dark .custom-card, html.dark .custom-card-header, html.dark header.glass { background: #1d2939 !important; border-color: #344054 !important; }
+        html.dark .custom-card-header, html.dark .custom-card, html.dark .table td { color: #f2f4f7 !important; }
+        html.dark .table th { background: #182230 !important; }
+        @media (max-width: 768px) {
+            html { font-size: 14px; }
+            .sidebar { padding: 16px 12px; width: 272px; min-width: 272px; left: -272px; }
+            .sidebar.show { transform: translateX(272px); }
+            header.glass { min-height: 62px; padding: 9px 14px !important; }
+            .main-content { padding-bottom: 76px; }
+            .app-page { padding-left: 14px !important; padding-right: 14px !important; }
+            .custom-card { border-radius: 10px; margin-bottom: 14px; }
+            .custom-card-header { padding: 14px 16px; }
+            .custom-card-body { padding: 16px; }
+            .table-responsive { margin: 0 -16px; padding: 0 16px 12px; }
+            .modal-content { padding: 18px; border-radius: 12px; }
+            .btn { min-height: 40px; }
+        }
+
+        /* =============================================================
+           LEARNING WORKSPACE â€” visual system refresh
+           This layer intentionally replaces the previous corporate shell
+           while keeping every page, action and data flow unchanged.
+           ============================================================= */
+        :root {
+            --md-sys-color-primary: #0f766e;
+            --md-sys-color-primary-container: #d8f3ee;
+            --md-sys-color-on-primary-container: #064e49;
+            --sidebar-width: 272px;
+            --surface: #fffefa;
+            --surface-subtle: #f7f5ef;
+            --ink: #24312f;
+            --muted: #697572;
+            --line: #e5e8df;
+            --coral: #e97955;
+            --shadow-soft: 0 12px 32px rgba(34, 54, 50, .08);
+        }
+        html { font-size: 15px; }
+        body {
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 9% 0%, rgba(255, 210, 150, .22), transparent 27rem),
+                radial-gradient(circle at 94% 12%, rgba(176, 226, 214, .38), transparent 25rem),
+                #f7f6f0;
+            font-family: 'Figtree', sans-serif;
+        }
+        .app-shell { background: transparent; gap: 0; }
+        .sidebar {
+            background: rgba(255, 254, 250, .92);
+            border-right: 1px solid rgba(36, 49, 47, .09);
+            box-shadow: 12px 0 40px rgba(34, 54, 50, .045);
+            padding: 18px 14px;
+        }
+        .sidebar .text-slate-800, .sidebar h4 { color: #24413d !important; }
+        .sidebar .text-slate-500 { color: #7c8984 !important; }
+        .sidebar .border-slate-200\/50 { border-color: #e8e6dc !important; }
+        .sidebar .bg-primary\/10 { background: #d8f3ee !important; }
+        .sidebar .text-primary { color: #0f766e !important; }
+        .sidebar > div:first-child { padding: 8px 10px 20px !important; }
+        .sidebar > div:first-child > div:first-child > div:first-child {
+            background: linear-gradient(145deg, #d8f3ee, #f7dabb) !important;
+            border-radius: 16px !important;
+            box-shadow: none !important;
+        }
+        .sidebar h4 { font-size: 1.08rem; letter-spacing: -.03em; }
+        .nav-item-custom {
+            position: relative; color: #66736f; border-radius: 12px;
+            padding: 10px 12px; margin-bottom: 3px; font-size: .91rem;
+            font-weight: 650;
+        }
+        .nav-item-custom .material-symbols-rounded {
+            color: #71807b; margin-right: 12px; font-size: 20px;
+        }
+        .nav-item-custom:hover { color: #0d625b; background: #edf7f4; }
+        .nav-item-custom:hover .material-symbols-rounded { color: #0f766e; }
+        .nav-item-custom.active {
+            color: #075d56; background: #d8f3ee; box-shadow: none;
+        }
+        .nav-item-custom.active::before {
+            content: ''; position: absolute; left: -14px; height: 22px; width: 4px;
+            background: #e97955; border-radius: 0 8px 8px 0;
+        }
+        .nav-item-custom.active .material-symbols-rounded { color: #0f766e !important; }
+        .main-content { background: transparent; height: 100dvh; }
+        header.glass {
+            min-height: 76px; padding: 14px 30px !important;
+            background: rgba(247, 246, 240, .78); border-bottom: 1px solid rgba(36,49,47,.07);
+            backdrop-filter: blur(18px); box-shadow: none;
+        }
+        header.glass strong { color: #24312f !important; }
+        .app-page { max-width: 1500px; padding-top: 8px; }
+        .custom-card {
+            background: rgba(255,254,250,.88) !important;
+            border: 1px solid rgba(36,49,47,.08) !important;
+            border-radius: 18px; box-shadow: var(--shadow-soft); margin-bottom: 20px;
+        }
+        .custom-card:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(34,54,50,.11); }
+        .custom-card-header {
+            color: #263735; background: transparent !important; border-bottom: 1px solid #ecece5;
+            padding: 18px 22px; font-size: 1rem;
+        }
+        .custom-card-body { padding: 22px; }
+        .btn { border-radius: 10px; font-weight: 700; min-height: 40px; }
+        .btn-primary { background: #0f766e; box-shadow: 0 5px 12px rgba(15,118,110,.18); }
+        .btn-primary:hover { background: #0b625c; box-shadow: 0 7px 16px rgba(15,118,110,.24); }
+        .btn-success { background: #198754; } .btn-danger { background: #c7504e; }
+        .btn-indigo { background: #5369b6; }
+        .btn-tonal-primary { color: #075d56; background: #d8f3ee; }
+        .btn-tonal-secondary { color: #4e5b57; background: #f0f1eb; }
+        .btn-icon { border-radius: 10px; }
+        .form-control, .form-select, .custom-select-trigger {
+            border-color: #d9ddd4; border-radius: 10px; background: #fffefa; color: #344440;
+            box-shadow: none;
+        }
+        .form-control:focus, .form-select:focus, .custom-select-trigger.open {
+            border-color: #55a79d; box-shadow: 0 0 0 3px #d8f3ee; background: #fff;
+        }
+        .table th { background: #f2f4ee !important; color: #62706b; border-bottom-color: #e2e6de; }
+        .table td { color: #40504c; border-bottom-color: #edf0e9; }
+        .table tr:hover td { background: #f3faf7; }
+        .nav-tabs { border-bottom-color: #e1e5dc; }
+        .nav-tabs .nav-link { border-radius: 10px 10px 0 0; color: #71807b; }
+        .nav-tabs .nav-link.active { color: #0f766e; border-bottom-color: #e97955; }
+        .modal-overlay { background: rgba(29, 45, 41, .42); }
+        .modal-content { background: #fffefa; border-radius: 20px; }
+        .bottom-nav {
+            left: 12px; bottom: calc(env(safe-area-inset-bottom) + 10px); width: calc(100% - 24px) !important;
+            border: 1px solid rgba(36,49,47,.1) !important; border-radius: 18px;
+            background: rgba(255,254,250,.94) !important; box-shadow: 0 12px 30px rgba(34,54,50,.16);
+            padding: 7px 5px !important;
+        }
+        .bottom-nav .nav-bottom-item { color: #71807b; border-radius: 12px; padding: 6px 3px !important; }
+        .bottom-nav .nav-bottom-item.active-bottom { color: #075d56 !important; background: #d8f3ee; }
+        .bottom-nav .nav-bottom-item .material-symbols-rounded { font-size: 23px !important; margin-bottom: 2px !important; }
+        html.dark body, html.dark .app-shell, html.dark .main-content { background: #152421; }
+        html.dark .sidebar { background: #1b2d29; border-color: #36524b; }
+        html.dark .sidebar h4, html.dark .sidebar .text-slate-800 { color: #eff8f4 !important; }
+        html.dark .nav-item-custom { color: #bbcbc5; }
+        html.dark .nav-item-custom:hover { background: #27423c; color: #fff; }
+        html.dark .nav-item-custom.active { background: #245f56; color: #fff; }
+        html.dark header.glass, html.dark .custom-card, html.dark .custom-card-header { background: #203430 !important; border-color: #38514b !important; }
+        html.dark .custom-card, html.dark .custom-card-header, html.dark .table td { color: #eff8f4 !important; }
+        html.dark .table th { background: #1a2b28 !important; }
+        @media (max-width: 768px) {
+            body { background: #f7f6f0; }
+            .sidebar { width: 272px; min-width: 272px; left: -272px; padding: 14px 12px; }
+            .sidebar.show { transform: translateX(272px); }
+            header.glass { min-height: 66px; padding: 10px 16px !important; }
+            .main-content { padding-bottom: 92px; }
+            .app-page { padding: 4px 14px 0 !important; }
+            .custom-card { border-radius: 15px; margin-bottom: 14px; }
+            .custom-card-header { padding: 15px 16px; }
+            .custom-card-body { padding: 16px; }
+            .bottom-nav .nav-bottom-item span:last-child { font-size: 9px !important; }
         }
     </style>
     </head>
