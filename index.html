@@ -474,6 +474,11 @@
         .bottom-nav .nav-bottom-item { color: #71807b; border-radius: 12px; padding: 6px 3px !important; }
         .bottom-nav .nav-bottom-item.active-bottom { color: #075d56 !important; background: #d8f3ee; }
         .bottom-nav .nav-bottom-item .material-symbols-rounded { font-size: 23px !important; margin-bottom: 2px !important; }
+        .nav-menu-trigger {
+            color: #71807b; border: 0; border-radius: 12px; background: transparent;
+            font: inherit; cursor: pointer;
+        }
+        .nav-menu-trigger:active { background: #d8f3ee; color: #075d56; transform: scale(.96); }
         html.dark body, html.dark .app-shell, html.dark .main-content { background: #152421; }
         html.dark .sidebar { background: #1b2d29; border-color: #36524b; }
         html.dark .sidebar h4, html.dark .sidebar .text-slate-800 { color: #eff8f4 !important; }
@@ -485,6 +490,8 @@
         html.dark .table th { background: #1a2b28 !important; }
         @media (max-width: 768px) {
             body { background: #f7f6f0; }
+            /* The complete menu is deliberately placed in the thumb zone. */
+            #btnShowSidebar { display: none !important; }
             /* On phones the complete navigation becomes a thumb-friendly menu sheet,
                not a shrunken desktop sidebar. */
             .sidebar {
@@ -528,6 +535,9 @@
             .custom-card-header { padding: 15px 16px; }
             .custom-card-body { padding: 16px; }
             .bottom-nav .nav-bottom-item span:last-child { font-size: 9px !important; }
+            .bottom-nav .nav-menu-trigger { padding: 6px 3px !important; min-width: 0; }
+            .bottom-nav .nav-menu-trigger .material-symbols-rounded { font-size: 23px !important; margin-bottom: 2px !important; }
+            .bottom-nav .nav-menu-trigger span:last-child { font-size: 9px !important; }
         }
     </style>
     </head>
@@ -1129,6 +1139,10 @@
                 <span class="material-symbols-rounded text-[28px] mb-1">menu_book</span>
                 <span class="text-[10px] font-bold">Jurnal</span>
             </a>
+            <button type="button" class="flex-1 flex flex-col items-center p-1 nav-menu-trigger" onclick="toggleSidebar()" aria-label="Buka menu lainnya">
+                <span class="material-symbols-rounded text-[28px] mb-1">apps</span>
+                <span class="text-[10px] font-bold">Lainnya</span>
+            </button>
         </nav>
     </section>
 
