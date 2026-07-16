@@ -6,6 +6,7 @@
     <title>AD Class</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0f766e">
+    <meta name="app-version" content="2026.07.16.4">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/syafii0388/Logo/refs/heads/main/Logo%20Ali%20dan%20Devi.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -479,6 +480,16 @@
             font: inherit; cursor: pointer;
         }
         .nav-menu-trigger:active { background: #d8f3ee; color: #075d56; transform: scale(.96); }
+        .network-indicator {
+            display: inline-flex; align-items: center; gap: 5px; flex: 0 0 auto;
+            color: #087f5b; background: #e5f8ef; border-radius: 999px; padding: 3px 7px;
+            font-size: 10px; font-weight: 800; letter-spacing: .01em;
+        }
+        .network-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px rgba(8,127,91,.12); }
+        .network-indicator.is-offline { color: #a85d15; background: #fff0d8; }
+        .network-indicator.is-offline .network-dot { box-shadow: 0 0 0 3px rgba(168,93,21,.13); }
+        #btnFrontendSync:not(.d-none) { animation: sync-ready 1.8s ease-in-out infinite; }
+        @keyframes sync-ready { 50% { box-shadow: 0 0 0 5px rgba(15,118,110,.13); } }
         html.dark body, html.dark .app-shell, html.dark .main-content { background: #152421; }
         html.dark .sidebar { background: #1b2d29; border-color: #36524b; }
         html.dark .sidebar h4, html.dark .sidebar .text-slate-800 { color: #eff8f4 !important; }
@@ -488,6 +499,14 @@
         html.dark header.glass, html.dark .custom-card, html.dark .custom-card-header { background: #203430 !important; border-color: #38514b !important; }
         html.dark .custom-card, html.dark .custom-card-header, html.dark .table td { color: #eff8f4 !important; }
         html.dark .table th { background: #1a2b28 !important; }
+        html.dark .nav-menu-trigger { color: #b7c9c3; }
+        html.dark .nav-menu-trigger:active { color: #f2fffa; background: #2d675f; }
+        html.dark .bottom-nav { background: rgba(32,52,48,.96) !important; border-color: #38514b !important; }
+        html.dark .bottom-nav .nav-bottom-item { color: #b7c9c3 !important; }
+        html.dark .bottom-nav .nav-bottom-item.active-bottom { color: #d8fff5 !important; background: #2d675f; }
+        html.dark .network-indicator { color: #8be1c7; background: #1f4a41; }
+        html.dark .network-indicator.is-offline { color: #ffd08a; background: #5a4021; }
+        html.dark #btnFrontendSync { background: #1f554d !important; color: #a8ede0 !important; border-color: #397b70 !important; }
         @media (max-width: 768px) {
             body { background: #f7f6f0; }
             /* The complete menu is deliberately placed in the thumb zone. */
@@ -529,6 +548,9 @@
                 background: #fff4ef; border-color: #f6d9cc;
             }
             header.glass { min-height: 66px; padding: 10px 16px !important; }
+            .topbar-school { max-width: calc(100vw - 165px); }
+            .topbar-school #topbarSekolah { font-size: .9rem; }
+            .network-indicator { padding: 3px 6px; font-size: 9px; }
             .main-content { padding-bottom: 92px; }
             .app-page { padding: 4px 14px 0 !important; }
             .custom-card { border-radius: 15px; margin-bottom: 14px; }
@@ -645,15 +667,25 @@
                         <span class="material-symbols-rounded text-xl">menu</span>
                     </button>
                     
-                    <div class="hidden sm:block">
-                        <strong id="topbarSekolah" class="text-lg font-extrabold text-slate-800 tracking-tight">AD Class</strong>
-                        <span class="ml-2 inline-block px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 rounded-full text-[10px] font-bold uppercase tracking-wide">Workspace</span>
-                        <span id="topbarSemester" class="ml-1 inline-block px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400 rounded-full text-[10px] font-bold uppercase tracking-wide">-</span>
+                    <div class="topbar-school min-w-0">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <strong id="topbarSekolah" class="text-lg font-extrabold text-slate-800 tracking-tight truncate">AD Class</strong>
+                            <span id="networkIndicator" class="network-indicator" role="status" aria-live="polite" title="Status koneksi">
+                                <span class="network-dot"></span><span id="networkStatusText">Online</span>
+                            </span>
+                        </div>
+                        <div class="hidden sm:flex items-center gap-1 mt-1">
+                            <span class="inline-block px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 rounded-full text-[10px] font-bold uppercase tracking-wide">Workspace</span>
+                            <span id="topbarSemester" class="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400 rounded-full text-[10px] font-bold uppercase tracking-wide">-</span>
+                        </div>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
                     <button id="btnToggleTheme" onclick="toggleThemeMode()" class="btn-icon bg-white/50 text-slate-600 border border-slate-200/50 shadow-sm shrink-0 w-9 h-9 hover:bg-slate-100" title="Ubah Mode Layar">
                         <span class="material-symbols-rounded text-[20px]" id="iconDarkModeTopbar">light_mode</span>
+                    </button>
+                    <button id="btnFrontendSync" onclick="syncFrontendUpdate()" class="d-none btn-icon bg-primaryContainer text-primary border border-primary/10 shadow-sm shrink-0 w-9 h-9" title="Terapkan pembaruan aplikasi" aria-label="Terapkan pembaruan aplikasi">
+                        <span class="material-symbols-rounded text-[20px]">sync</span>
                     </button>
                     <button id="btnInstallApp" onclick="installPWA()" class="hidden btn btn-sm bg-emerald-100 text-emerald-700 hover:bg-emerald-200 border-none shadow-sm dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/60 hidden sm:flex" title="Install Aplikasi">
                         <span class="material-symbols-rounded mr-1 text-sm">install_desktop</span> Install
@@ -1119,10 +1151,6 @@
         </main>
         
         <nav class="bottom-nav fixed bottom-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 md:hidden flex justify-between px-2 pt-2 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]" style="padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);">
-            <a href="#" class="flex-1 flex flex-col items-center p-1 text-primary nav-bottom-item active-bottom" onclick="showPage('dashboard', this)">
-                <span class="material-symbols-rounded text-[28px] mb-1">space_dashboard</span>
-                <span class="text-[10px] font-bold">Beranda</span>
-            </a>
             <a href="#" class="flex-1 flex flex-col items-center p-1 text-slate-500 hover:text-primary nav-bottom-item" onclick="showPage('absensi', this)">
                 <span class="material-symbols-rounded text-[28px] mb-1">how_to_reg</span>
                 <span class="text-[10px] font-bold">Absensi</span>
@@ -1134,10 +1162,6 @@
             <a href="#" class="flex-1 flex flex-col items-center p-1 text-slate-500 hover:text-primary nav-bottom-item" onclick="showPage('nilai', this)">
                 <span class="material-symbols-rounded text-[28px] mb-1">stars</span>
                 <span class="text-[10px] font-bold">Nilai</span>
-            </a>
-            <a href="#" class="flex-1 flex flex-col items-center p-1 text-slate-500 hover:text-primary nav-bottom-item" onclick="showPage('jurnal', this)">
-                <span class="material-symbols-rounded text-[28px] mb-1">menu_book</span>
-                <span class="text-[10px] font-bold">Jurnal</span>
             </a>
             <button type="button" class="flex-1 flex flex-col items-center p-1 nav-menu-trigger" onclick="toggleSidebar()" aria-label="Buka menu lainnya">
                 <span class="material-symbols-rounded text-[28px] mb-1">apps</span>
@@ -1194,6 +1218,7 @@
         let isDarkMode = localStorage.getItem('theme_mode') === 'dark';
         let activeSemesterPath = localStorage.getItem('z_semester_path') || 'adclass';
         let activeSemesterLabel = localStorage.getItem('z_semester_label') || '-';
+        let pendingFrontendWorker = null;
         
         let localDB = {
             pengaturan: { namaSekolah: '', alamat: '', kelas: '', guru: '', nipGuru: '', kepsek: '', nipKepsek: '' },
@@ -1288,6 +1313,7 @@
                 activeSemesterPath = path;
                 activeSemesterLabel = label;
 
+                activePage = 'dashboard';
                 Swal.fire({icon: 'success', title: 'Berhasil Masuk', showConfirmButton: false, timer: 1200, customClass: { popup: 'glass rounded-3xl' }});
                 setTimeout(() => { checkLoginState(); }, 1200);
 
@@ -1310,6 +1336,7 @@
     
             if(Auth.isVerified()) {
                 lp.classList.add('d-none'); ma.classList.remove('d-none');
+                activePage = 'dashboard';
                 if(document.getElementById('topbarSemester')) document.getElementById('topbarSemester').innerText = activeSemesterLabel;
         
                 let btnAdmin = document.getElementById('menuAdminUsers');
@@ -1327,6 +1354,60 @@
                 document.getElementById('loginForm').reset(); 
             }
         };
+
+        window.updateNetworkIndicator = function() {
+            const indicator = document.getElementById('networkIndicator');
+            const label = document.getElementById('networkStatusText');
+            if (!indicator || !label) return;
+            const online = navigator.onLine;
+            indicator.classList.toggle('is-offline', !online);
+            label.innerText = online ? 'Online' : 'Offline';
+            indicator.title = online ? 'Terhubung ke internet' : 'Tidak ada koneksi internet';
+        };
+
+        window.showFrontendSync = function(worker = null) {
+            const button = document.getElementById('btnFrontendSync');
+            if (!button) return;
+            pendingFrontendWorker = worker || pendingFrontendWorker;
+            button.classList.remove('d-none');
+        };
+
+        window.checkFrontendUpdate = async function() {
+            const button = document.getElementById('btnFrontendSync');
+            if (!button) return;
+            try {
+                if ('serviceWorker' in navigator) {
+                    const registration = await navigator.serviceWorker.getRegistration();
+                    if (registration) {
+                        await registration.update();
+                        if (registration.waiting) showFrontendSync(registration.waiting);
+                        registration.addEventListener('updatefound', () => {
+                            const worker = registration.installing;
+                            if (!worker) return;
+                            worker.addEventListener('statechange', () => {
+                                if (worker.state === 'installed' && navigator.serviceWorker.controller) showFrontendSync(worker);
+                            });
+                        });
+                    }
+                }
+                const response = await fetch(`${location.pathname}?frontend-check=${Date.now()}`, { cache: 'no-store' });
+                if (!response.ok) return;
+                const source = await response.text();
+                const incoming = source.match(/<meta\\s+name=["']app-version["']\\s+content=["']([^"']+)["']/i)?.[1];
+                const current = document.querySelector('meta[name="app-version"]')?.content;
+                if (incoming && current && incoming !== current) showFrontendSync();
+            } catch (_) { /* Offline is handled by the connection indicator. */ }
+        };
+
+        window.syncFrontendUpdate = function() {
+            const button = document.getElementById('btnFrontendSync');
+            if (button) button.classList.add('d-none');
+            if (pendingFrontendWorker) pendingFrontendWorker.postMessage({ type: 'SKIP_WAITING' });
+            window.location.reload();
+        };
+
+        window.addEventListener('online', () => { updateNetworkIndicator(); checkFrontendUpdate(); });
+        window.addEventListener('offline', updateNetworkIndicator);
         window.copyDataSemester = async function(e) {
             e.preventDefault();
             let ta = document.getElementById('copy_ta').value;
@@ -2544,6 +2625,8 @@
         // 4. AWAL EKSEKUSI
         // =========================================================================
         document.addEventListener('DOMContentLoaded', function() { 
+            updateNetworkIndicator();
+            checkFrontendUpdate();
             checkLoginState(); 
         });
 
