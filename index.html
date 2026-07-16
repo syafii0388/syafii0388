@@ -700,13 +700,13 @@
                                 </div>
                                 <div id="btn_group_rekap" class="flex items-center gap-2">
                                     <button class="btn btn-sm btn-success flex items-center" onclick="exportRaporExcel()"><span class="material-symbols-rounded text-xs mr-1">table_view</span> Excel</button>
+                                </div>
+                                <div id="btn_group_ketercapaian" class="flex items-center gap-2 d-none">
+                                    <button class="btn btn-sm btn-success flex items-center" onclick="exportKetercapaianExcel()"><span class="material-symbols-rounded text-xs mr-1">download</span> Ekspor</button>
                                     <input type="file" id="templateInputERapor" class="hidden" accept=".xlsx" onchange="prosesInjectERapor(event)">
                                     <button class="btn btn-sm btn-indigo flex items-center" onclick="document.getElementById('templateInputERapor').click()">
                                         <span class="material-symbols-rounded text-xs mr-1">upload_file</span> Inject e-Rapor
                                     </button>
-                                </div>
-                                <div id="btn_group_ketercapaian" class="flex items-center gap-2 d-none">
-                                    <button class="btn btn-sm btn-success flex items-center" onclick="exportKetercapaianExcel()"><span class="material-symbols-rounded text-xs mr-1">download</span> Ekspor</button>
                                 </div>
                             </div>
                         </div>
